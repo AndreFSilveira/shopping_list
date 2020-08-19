@@ -10,4 +10,10 @@ Rails.application.routes.draw do
     patch  "/v1/users/password" => "api/v1/passwords#update",constraints: { subdomain: 'api' }
     post   "/v1/users/password" => "api/v1/passwords#create", constraints: { subdomain: 'api' }
   end
+  scope module: 'api' do
+    namespace 'v1' do
+      get 'check_token' => 'users#check_token'
+    end
+  end
+
 end
